@@ -18,7 +18,7 @@ namespace AzFunctionInternals
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("Process function processed a request.");
+            log.LogInformation("Processes function processed a request.");
 
             return new OkObjectResult(System.Diagnostics.Process.GetProcesses().Select(p => new { p.ProcessName, p.Id, p.SessionId }));
         }
