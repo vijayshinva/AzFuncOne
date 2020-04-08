@@ -10,20 +10,16 @@ using Newtonsoft.Json;
 
 namespace AzFuncOne
 {
-    public static class DbgThrowException
+    public static class LogicalDrives
     {
-        [FunctionName("DbgThrowException")]
+        [FunctionName("LogicalDrives")]
         public static IActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
-            log.LogInformation("DbgThrowException function processed a request.");
+            log.LogInformation("LogicalDrives function processed a request.");
 
-            throw new Exception("I am crashing!");
-
-#pragma warning disable CS0162 // Unreachable code detected
-            return new OkResult();
-#pragma warning restore CS0162 // Unreachable code detected
+            return new OkObjectResult(System.Environment.GetLogicalDrives());
         }
     }
 }
